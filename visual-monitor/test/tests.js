@@ -41,7 +41,7 @@ var caps = selectedCaps ? capsConfig[selectedCaps] : undefined;
 var providerPrefix = process.env.PROVIDER_PREFIX ? process.env.PROVIDER_PREFIX + '-' : '';
 var testName = selectedCaps ? providerPrefix + selectedCaps : providerPrefix + 'default';
 
-var baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'https://www.9000000.co.il';
+var baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'https://www.9000000.co.il/site/online/landing/life/mortgage/lowest_mortage_offer.html';
 
 var resultsCallback = process.env.DEBUG ? console.log : shoovWebdrivercss.processResults;
 
@@ -64,9 +64,12 @@ describe('Visual monitor testing', function() {
       .webdrivercss(testName + '.homepage', {
         name: '1',
         exclude: [],
-        remove: [],
+        remove:
+          [
+            '#wizFloatpreimage'
+          ],
         hide: [],
-        screenWidth: selectedCaps == 'chrome' ? [640, 960, 1200] : undefined,
+        screenWidth: selectedCaps == 'chrome' ? [1200] : undefined,
       }, resultsCallback)
       .call(done);
   });
